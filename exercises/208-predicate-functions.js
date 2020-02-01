@@ -20,7 +20,18 @@
 // isVowel('A') --> true
 // isVowel(99) --> false
 // isVowel({e: 'Elephant'}) --> false
-
+function isVowel (a){
+let vowel = [ 'A', 'e', 'i', 'o', 'u', 'a']
+    if (a.length > 1 && typeof a !== 'string'){
+     return false
+}
+ for ( let i = 0 ; i <= vowel.length ; i++){
+     if (a === vowel[i]){
+         return true
+     } 
+}
+return false
+}
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,8 +48,23 @@
 // isOdd('7') --> false
 // isOdd(3.14) --> false
 
+function isEven (num){
+    if(Number.isInteger(num) && num % 2 === 0){
+        return true
+}
+    else {
+       return false
+}
+}
 
-
+function isOdd (num){
+    if(Number.isInteger(num) && num % 2 !== 0){
+       return true
+}
+   else {
+      return false
+}   
+}
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "isCapitalCity" that takes two arguments: a US state and a city name
 // and returns true or false if the city name is the capital of the state.
@@ -53,3 +79,19 @@
 // isCapitalCity('Texas', 'Houston') --> false
 // isCapitalCity('Alaska', 'Juneau') --> true
 // isCapitalCity('Strawberry', 'Mango') --> false
+var capital = {
+    "Texas" : 'Austin',
+    "Alaska" : 'Juneau'
+}
+
+function isCapitalCity (state, capital1){
+   if( state == Object.keys(capital)[0] && capital1 == Object.values(capital)[0] ){
+       return true
+   }
+     else if (state == Object.keys(capital)[1] && capital1 == Object.values(capital)[1]){
+        return true
+   }
+     else {
+       return false
+   }
+}

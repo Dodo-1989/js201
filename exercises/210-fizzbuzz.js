@@ -9,3 +9,26 @@
 // Examples:
 // fizzbuzz(3) --> '..fizz'
 // fizzbuzz(15) --> '..fizz.buzzfizz..fizzbuzz.fizz..fizzbuzz'
+
+function fizzbuzz (num){
+    let str = "";
+    let numArr = []
+ for (let i = 1 ; i <= num ; i++){
+     numArr.push(i)
+ }
+  for ( let i in numArr){
+      if (numArr[i] % 3 !== 0 && numArr[i] % 5 !== 0){
+          str += '.'
+      }
+       else if (numArr[i] % 3 === 0 && numArr[i] % 5 !== 0 ){
+          str += 'fizz'
+      }
+        else if ( numArr[i] % 3 !== 0 && numArr[i] % 5 === 0 ){
+          str += 'buzz'
+      }
+      else {
+          str += 'fizzbuzz'
+      }
+  }
+  return str
+}
