@@ -79,18 +79,13 @@ function isOdd (num){
 // isCapitalCity('Texas', 'Houston') --> false
 // isCapitalCity('Alaska', 'Juneau') --> true
 // isCapitalCity('Strawberry', 'Mango') --> false
-var capital = {
-    "Texas" : 'Austin',
-    "Alaska" : 'Juneau'
-}
+var capital = {'Texas':'Austin', 'Alaska': 'Juneau'}
+   
 
 function isCapitalCity (state, capital1){
-   if( state == Object.keys(capital)[0] && capital1 == Object.values(capital)[0] ){
+   if( capital[state] === capital1 ){
        return true
-   }
-     else if (state == Object.keys(capital)[1] && capital1 == Object.values(capital)[1]){
-        return true
-   }
+   }  
      else {
        return false
    }

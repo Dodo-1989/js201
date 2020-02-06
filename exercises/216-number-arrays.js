@@ -5,12 +5,30 @@ function max (arr){
      if ( arr.length === 0 ){
          return 0
      }
+     //======================================>First Approach
     // arr.sort(function(a,b){return a - b})
     // return arr.pop()
-    return Math.max(...arr)
+    //============================> Second
+   // return Math.max(...arr)
+    //==========================> Last Approach 
+   return  myMathMax(arr);
 }
 
-
+//===================================> My own version of Math.Max made from scratch:)
+const myMathMax = (function  (arr) {
+var max = 0
+ for ( let i = 0 ; i < arr.length-1 ; i++){
+     if ( arr[i] > arr[i+1]){
+         max = arr[i]
+         arr[i+1] = arr[i]
+     }
+     else{
+         max = arr[i+1]        
+     }
+ }
+ return max
+ 
+})
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "sumNumbers" which is given an array of numbers and returns
 // the sum of the numbers.

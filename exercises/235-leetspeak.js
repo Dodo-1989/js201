@@ -89,6 +89,7 @@
 
 //.................................................................
 
+//=====> Last Approach, short but looks weired!?!!!
 function leetspeak (str){
     return str.toLowerCase()
     .replace(/a/g, '4')
