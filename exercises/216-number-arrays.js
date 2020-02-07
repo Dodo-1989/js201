@@ -50,6 +50,7 @@ function sumNumbers (arr){
 // positives([1, -3, 5, -3, 0]) --> [1, 5]
 // positives([1, 2, 3]) --> [1, 2, 3]
 // positives([-1, -2, -3]) --> []
+//===================================>> First Appraoch
  function positives (arr){
   var positiveNums = []
   var negativeNums = []
@@ -61,22 +62,46 @@ function sumNumbers (arr){
   }
   return positiveNums
  }
-
-
+//================================> Easier Approach using filter
+//function positives (arr){
+//return arr.filter(x => x > 0)
+//}
+//...............................................................
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "evens" which takes an array of numbers and returns a new
 // array containing only the even numbers in the given array.
 // Hint: you may want to re-use your "isEven" function from 01-predicate-functions.js
 
-function evens (arr){
-    var isEvenArr = []
-    for ( let i in arr){
-        arr[i] % 2 === 0? isEvenArr.push(arr[i]) : isEvenArr.push('')
-    }
-    return isEvenArr.filter(x => x !== '')
-}
+// function evens (arr){
+//     var isEvenArr = []
+//     for ( let i in arr){
+//         arr[i] % 2 === 0? isEvenArr.push(arr[i]) : isEvenArr.push('')
+//     }
+//     return isEvenArr.filter(x => x !== '')
+// }
+//========================================================> Using map instead.
 
+// function evens (arr){
+//     var isEvenArr = []
+//     arr.map(x => x % 2 === 0 ? isEvenArr.push(x): isEvenArr.push())
+//     return isEvenArr
+// }
+
+//=============================================================> Third Approach, using if statement!
+
+function evens (arr){
+    var isEvenArr = [];
+     for ( let i = 0 ; i <= arr.length ; i++){
+         if ( arr[i] % 2 !== 0){
+             isEvenArr.push()
+         }
+          else{
+              isEvenArr.push(arr[i])
+         }
+     }
+     return isEvenArr
+}
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "odds" which takes an array of numbers and returns a new
 // array containing only the odd numbers in the given array.

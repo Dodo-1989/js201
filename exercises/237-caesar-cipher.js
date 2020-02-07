@@ -48,7 +48,6 @@ const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
 //.....................................................
 
 //========================> First Approach
-const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //function decipher (string, shift){
 // return string.toLowerCase().replace(/[a-z]/g, x => (alpha.indexOf(x) - shift) < 0? alpha[(alpha.indexOf(x) - shift) + 26] : alpha[alpha.indexOf(x) - shift])
 //}
@@ -62,8 +61,7 @@ function decipher (str, shif){
     for ( let i in loweredCase){
          let shiftedIndx = alpha.indexOf(loweredCase[i]) - shif
           if ( shiftedIndx < 0){
-            decipherized.push(loweredCase[i].replace(regex1, alpha[shiftedIndx + 26]))
-           
+            decipherized.push(loweredCase[i].replace(regex1, alpha[shiftedIndx + 26]))          
     }
      else {
         decipherized.push(loweredCase[i].replace(regex1, alpha[shiftedIndx]))

@@ -48,29 +48,54 @@
 // }
 
 
-//=====> Another Approach
+//=====> Another Approach, listing all the commone factorials and then getting the highest number!!
 
-function gcd(n1 , n2){
-    var fac = []
+// function gcd(n1 , n2){
+//     var fac = []
 
-    if ( n1 < n2 ){
-        for ( let i = 0 ; i <= n1; i++){
-            if (n1 % i === 0 && n2 % i === 0){
-                fac.push(i)
-            }
-        }
+//     if ( n1 < n2 ){
+//         for ( let i = 0 ; i <= n1; i++){
+//             if (n1 % i === 0 && n2 % i === 0){
+//                 fac.push(i)
+//             }
+//         }
+//     }
+//     else if ( n2 < n1){
+//         for ( let j = 0; j <= n2; j++){
+//             if (n2 % j === 0 && n1 % j === 0){
+//                 fac.push(j)
+//           }
+//      }
+
+// }
+// return Math.max(...fac)
+
+// }
+
+//===================================================>Last Appraoch!! Starting from the highest to the lowest using reverse loop!
+ function gcd (n1, n2){
+
+   if ( n1 < n2){
+    for ( let i = n1; i >=0 ; i--){
+        if ( n1 % i === 0 && n2 % i === 0){
+            return i 
+              }
+                         
     }
+       
+ }
     else if ( n2 < n1){
-        for ( let j = 0; j <= n2; j++){
-            if (n2 % j === 0 && n1 % j === 0){
-                fac.push(j)
-          }
-     }
-
-}
-return Math.max(...fac)
-
-}
+        for ( let i = n2; i >=0 ; i--){
+            if ( n2 % i === 0 && n1 % i === 0){
+                return i
+                  }
+                  
+                     
+        }
+       
+    }
+   
+ }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "factors" which is given a number and returns an array
