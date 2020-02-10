@@ -15,7 +15,7 @@ function max (arr){
 }
 
 //===================================> My own version of Math.Max made from scratch:)
-const myMathMax = (function  (arr) {
+const myMathMax = (function (arr) {
 var max = 0
  for ( let i = 0 ; i < arr.length-1 ; i++){
      if ( arr[i] > arr[i+1]){
@@ -29,6 +29,20 @@ var max = 0
  return max
  
 })
+
+//========================================>A more readable version of Math.max, which was instructed by Chris..By adding items in the array to a variable right after the array starts!!!
+
+
+function maximum (arr){
+    var max = 0
+     for ( let i = 0 ; i < arr.length ; i++){
+         const firstItem = arr[i]
+          if (firstItem > max){ 
+              max = firstItem 
+          }
+     }
+     return max
+}
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "sumNumbers" which is given an array of numbers and returns
 // the sum of the numbers.
@@ -90,18 +104,36 @@ function sumNumbers (arr){
 
 //=============================================================> Third Approach, using if statement!
 
-function evens (arr){
-    var isEvenArr = [];
-     for ( let i = 0 ; i <= arr.length ; i++){
-         if ( arr[i] % 2 !== 0){
-             isEvenArr.push()
-         }
-          else{
-              isEvenArr.push(arr[i])
-         }
-     }
-     return isEvenArr
+function isEven (num){
+    return typeof num === 'number' && num % 2 === 0
+
+//     if(Number.isInteger(num) && num % 2 === 0){
+//         return true
+// }
+//     else {
+//        return false
+// }
 }
+
+// function evens (arr){
+//     var isEvenArr = [];
+//      for ( let i = 0 ; i <= arr.length ; i++){
+//          if ( arr[i] % 2 !== 0){
+//              isEvenArr.push()
+//          }
+//           else{
+//               isEvenArr.push(arr[i])
+//          }
+//      }
+//      return isEvenArr
+// }
+
+//=================================> Fourth Approach, wanna try if filter alone work, lets filter the odd numbers and leave the even!!
+
+function evens (arr){
+    return arr.filter(isEven) ///====> It does :)
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "odds" which takes an array of numbers and returns a new
 // array containing only the odd numbers in the given array.

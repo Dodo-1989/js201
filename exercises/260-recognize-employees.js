@@ -16,44 +16,39 @@
 //
 // Hint: What is the best data structure for the employees of the month list?
 
-
-function recognizeEmployees (arrNames, arrWinner){
- var greatJob = []
- var meeh = []
- if ( arrWinner.length < 2){
-    for ( let i in arrNames){
-        for ( let j = 0 ; j < arrWinner.length ; j++){
-            if (arrNames[i] !== arrWinner[j] && arrNames[i] !== arrWinner[j+1]){
-                greatJob.push(`Great job, ${arrNames[i]}!`)
-                
-            }else {
-                greatJob.push(`Outstanding job, ${arrNames[i]}!`)
-            }
-
-           }
-                            
-        }
-          
-        }
-        else {
-            for ( let i in arrNames){
-                for ( let j = 0 ; j < arrWinner.length-1 ; j++){
-                    if (arrNames[i] !== arrWinner[j] && arrNames[i] !== arrWinner[j+1]){
-                        greatJob.push(`Great job, ${arrNames[i]}!`)
-                        
-                    }else {
-                        greatJob.push(`Outstanding job, ${arrNames[i]}!`)
-                    }
-        
-                   }
-                                    
-                }       
-        }
-    console.log(meeh)
-    return greatJob
-}
+// You can solve this with TWO loops. They are not nested.
+// Consider the hint on line 17
+// 
 
 
-//else{
-  //  greatJob.push(`Great job, ${arrNames[i]}!`)
-//}               
+function recognizeEmployees (names, namesOfTheMonth) {
+    var justForComparison = [] //= =========================>Ignore this Array
+    var finalArrayOfTheEmployees = []
+    const employeesOfTheMonthObj = {}
+    var objectKeys = 1
+    for (const names1 of namesOfTheMonth) {
+      employeesOfTheMonthObj[objectKeys] = names1
+      objectKeys++ //= ====================> Loop through the emplyees of the month and construct an Object based on the input.
+    }
+  
+    for (const indx of Object.keys(employeesOfTheMonthObj)) {
+      const elementInEmployeesOfTheMonth = employeesOfTheMonthObj[indx]
+      for (const indxes in names) {
+        const elementInNames = names[indxes]
+        if (elementInEmployeesOfTheMonth === elementInNames) {
+          finalArrayOfTheEmployees.push(`Outstanding job, ${elementInNames}!`) //= =========================> Comparing between the Object we constructed and the names
+          justForComparison.push(elementInNames) // of all the Employees and determine which one are idenical, and push the
+        } // required text to finalArrayOfTheEmployees.
+      }
+    }
+    for (const indx in names) {
+      const elementInNames = names[indx]
+      if (!justForComparison.includes(elementInNames)) {
+        finalArrayOfTheEmployees.unshift(`Great job, ${elementInNames}!`)  //====> Any name that is not included in justForComparison
+      }                                                                 // would be given Great job
+    }
+  
+    console.log(justForComparison)
+    return finalArrayOfTheEmployees
+  }
+  

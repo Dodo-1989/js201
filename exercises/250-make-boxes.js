@@ -65,7 +65,6 @@ function makeBox(w, h) {
       
          box[0] = []
          box[0].push("*".repeat(w))
-         box.push(box[0])
          
          for ( let j = 1 ; j < h-2; j++){
             box[j] = []

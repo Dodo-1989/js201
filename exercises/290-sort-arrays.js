@@ -20,7 +20,8 @@ function alphaSort (arr){
 // Examples:
 // strLengthSort(['Apple', 'Banana', 'Cherry'])
 // > ['Apple', 'Cherry', 'Banana']
-///===========================================> Fisrt Approach, using their length.
+///===========================================> Fisrt Approach, using their length. (This Approach arrange the string in order according to their length, 
+//but it fails the test becuase , the ones who are identical in length suppose to take the same order as the orignial array )
 // function strLengthSort(arr){
 //     var leng = []
 //     var sorted = []
@@ -79,35 +80,35 @@ function strLengthSort(arr){
 // respective sums for each inner array is 8, 20, and 9.
 //
 // Example:
- //sumSort([
- // [9, 1, 9],
- // [2],
- // [4, 5]
+//  sumSort([
+//  [9, 1, 9],
+//  [2],
+//  [4, 5]
 // ])
 // > [[2], [4, 5], [9, 1, 9]]
 
 
-function sumSort (arr){
+function sumSort (initialArr){
     var sortedArr = []
-    var individualAdds = []
-    for ( let i in arr){
+    var individualAdditionsOfArr = []
+    for ( let indx in initialArr){
         sum = 0
-        for ( let j in arr[i]){
-          sum +=arr[i][j]
+        for ( let innerIndx in initialArr[indx]){
+          sum +=initialArr[indx][innerIndx]
         }
-        individualAdds.push(sum)   
+        individualAdditionsOfArr.push(sum)   
 
     }
-          individualAdds.sort(function(a,b){ return a-b})
+    individualAdditionsOfArr.sort(function(a,b){ return a-b})
         
-            for ( let i in individualAdds){
-                for ( let j in arr){
+            for ( let index in individualAdditionsOfArr){
+                for ( let indx in initialArr){
                     sum = 0
-                    for ( let c in arr[j]){
-                      sum +=arr[j][c]
+                    for ( let innerIndx in initialArr[indx]){
+                      sum +=initialArr[indx][innerIndx]
                     }
-                    if ( individualAdds[i] === sum){
-                        sortedArr.push(arr[j])
+                    if ( individualAdditionsOfArr[index] === sum){
+                        sortedArr.push(initialArr[indx])
                     }
             
                 }

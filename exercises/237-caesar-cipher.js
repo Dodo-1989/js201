@@ -10,7 +10,7 @@
 //...............................................................................
 
 //===================> First Approach, easy but hard to read :/
-const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 //function cipher (string, shift){
 // return string.toLowerCase().replace(/[a-z]/g, x => (alpha.indexOf(x) + shift) < 26? alpha[alpha.indexOf(x) + shift] : alpha[(alpha.indexOf(x) + shift)%26])
   
@@ -20,20 +20,20 @@ const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
 //================> Second Approach, longer but, easier to read.
 
  function cipher (string, shift){
-    var cipherized = []
+    var afterCoding = []
     var loweredCase = string.toLowerCase().split('');
-    const regex = /[a-z]/g
+    const lettersAtoZ = /[a-z]/g
 
-    for ( let i in loweredCase){
-         let shiftedIndx = alpha.indexOf(loweredCase[i]) + shift
+    for ( let indx in loweredCase){
+         let shiftedIndx = alphabet.indexOf(loweredCase[indx]) + shift
           if ( shiftedIndx < 26){
-           cipherized.push(loweredCase[i].replace(regex, alpha[shiftedIndx]))
+            afterCoding.push(loweredCase[indx].replace(lettersAtoZ, alphabet[shiftedIndx]))
     }
      else {
-        cipherized.push(loweredCase[i].replace(regex, alpha[shiftedIndx % 26]))
+        afterCoding.push(loweredCase[indx].replace(lettersAtoZ, alphabet[shiftedIndx % 26]))
     }
 }
-       return cipherized.join('')
+       return afterCoding.join('')
  }
 //.................................................................................
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,24 +48,28 @@ const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
 //.....................................................
 
 //========================> First Approach
-//function decipher (string, shift){
-// return string.toLowerCase().replace(/[a-z]/g, x => (alpha.indexOf(x) - shift) < 0? alpha[(alpha.indexOf(x) - shift) + 26] : alpha[alpha.indexOf(x) - shift])
+//function decipher (codedString, requiredShift){
+// return codedString.toLowerCase().replace(/[a-z]/g, letter => (alphabet.indexOf(letter) - requiredShift) < 0? alphabet[(alphabet.indexOf(letter) - requiredShift) + 26] : alphabet[alphabet.indexOf(letter) - shift])
 //}
 
 //================================================> Second Approach :)
-function decipher (str, shif){
-    var decipherized = []
-    var loweredCase = str.toLowerCase().split('');
-    const regex1 = /[a-z]/g
+// ===> Declared above ===> const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    for ( let i in loweredCase){
-         let shiftedIndx = alpha.indexOf(loweredCase[i]) - shif
-          if ( shiftedIndx < 0){
-            decipherized.push(loweredCase[i].replace(regex1, alpha[shiftedIndx + 26]))          
+function decipher (codedString, requiredShift) {
+    const codedChars = codedString.toLowerCase().split('')
+    const decodedChars = []
+  
+    for (const indx in codedChars) {
+      const char = codedChars[indx]
+      const indexOfCharInAlphabet = alphabet.indexOf(char)
+      
+      let newIdx = indexOfCharInAlphabet - requiredShift
+      if (newIdx < 0) {
+          newIdx = newIdx + alphabet.length
+      }
+      const  theLetterThatWeAreReplacing = /[a-z]/g;
+      var replacementLetter = alphabet[newIdx]
+      decodedChars.push(char.replace(theLetterThatWeAreReplacing, replacementLetter))
     }
-     else {
-        decipherized.push(loweredCase[i].replace(regex1, alpha[shiftedIndx]))
-    }
-}
-       return decipherized.join('')
- }
+    return decodedChars.join('')
+  }
